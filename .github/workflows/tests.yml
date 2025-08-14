@@ -37,3 +37,12 @@ jobs:
 
     - name: Browser init    
       run: rfbrowser init
+
+    - name: Run E2E test
+      run: robot -d ./logs -i smoke tests
+
+    - name: Robot reporter
+      uses: joonvena/robotframework-reporter-action@v2.4  
+        with:
+         gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+         report_path: logs
